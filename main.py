@@ -3,7 +3,6 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 
 async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    print(update)
     await update.message.reply_text(f'Hello {update.effective_user.first_name}')
 
 
