@@ -1,6 +1,16 @@
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from db_con import MongoManager
+import os
 
+db_url = os.environ.get('MONGO_URL')
+conn = MongoManager(db_url)
+conn.connect()
+
+if conn.is_connected:
+    print("Mongo DB connected...")
+else:
+    print("Mongo DB was not connected...")
 
 async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(f'Hello {update.effective_user.first_name}')
