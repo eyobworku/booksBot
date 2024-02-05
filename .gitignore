@@ -1,2 +1,3 @@
 playbotenv/
-problem/
+__pycache__
+*.env
