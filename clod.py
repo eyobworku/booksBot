@@ -6,8 +6,6 @@ load_dotenv()
 api_key = os.environ.get("API_KEY2")
 
 cloudconvert.configure(api_key=api_key, sandbox=False)
-link = "https://api.telegram.org/file/bot6834520500:AAFt-zeDAnljl9dWQn2P-_zP2QglFF7eGvE/documents/file_7.epub"
-
 
 def convertPdf(link, file_name):
     job = cloudconvert.Job.create(
