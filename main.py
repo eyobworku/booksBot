@@ -1,20 +1,9 @@
 from telegram import Update
 from telegram.ext import ApplicationBuilder,ApplicationHandlerStop, CommandHandler, ContextTypes,ConversationHandler,MessageHandler,filters
-from db_con import MongoManager
 import os
-
 from dotenv import load_dotenv
 load_dotenv()
-db_url = os.environ.get('MONGO_URL')
 bot_token = os.environ.get('BOT_TOKEN')
-
-# conn = MongoManager(db_url)
-# conn.connect()
-
-# if conn.is_connected:
-#     print("Mongo DB connected...")
-# else:
-#     print("Mongo DB was not connected...")
 
 async def pre_process(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     context.user_data["step"] = context.user_data.get("step", 0) + 1
