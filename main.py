@@ -8,7 +8,7 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
-from clod import convertPdf
+from clod import convertPdf,getMe
 import os
 from dotenv import load_dotenv
 
@@ -25,6 +25,10 @@ async def pre_process(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await pre_process(update, context)
     await update.message.reply_text(f"Hello {update.effective_user.first_name}")
+
+async def getUser(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    usename,points = getMe()
+    await update.message.reply_text(f"{usename}\n{points}")
 
 
 async def eyu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -46,6 +50,8 @@ app = ApplicationBuilder().token(bot_token).build()
 # app.add_handler(MessageHandler(None, pre_process))
 
 app.add_handler(CommandHandler(["hello", "start"], hello))
+
+app.add_handler(CommandHandler("getme", getUser))
 
 app.add_handler(MessageHandler(filters.Document.ALL, myFile))
 

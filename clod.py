@@ -40,3 +40,9 @@ def convertPdf(link, file_name):
 
 
 # convertPdf(link,'eyub.pdf')
+def getMe():
+    client =  cloudconvert.cloudconvertrestclient.default_client() 
+    result = client.get('v2/users/me')
+    usename = result['data']['email'].split('@')[0]
+    points = result['data']['credits']
+    return usename,points
