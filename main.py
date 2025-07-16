@@ -84,6 +84,6 @@ app.add_handler(MessageHandler(filters.Document.ALL, myFile))
 
 app.add_handler(CommandHandler("eyu", eyu))
 
-app.run_polling(allowed_updates=Update.ALL_TYPES)
-# app.run_webhook(listen='0.0.0.0', port=443,
-#                 webhook_url='https://epubpdf.onrender.com/')
+# app.run_polling(allowed_updates=Update.ALL_TYPES)
+app.run_webhook(listen='0.0.0.0', port=443,
+                webhook_url='https://epubpdf.onrender.com/') #replace with your link
